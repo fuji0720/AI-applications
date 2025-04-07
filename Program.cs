@@ -1,27 +1,38 @@
+using AI_applications.Controllers;
+using AI_applications.Services;
+
 namespace AI_applications
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            builder.Services.MyConfig();
+
             builder.Services.AddControllersWithViews();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddLogging(config =>
+            {
+                config.AddConsole();
+                config.AddDebug();
+            });
 
-            var app = builder.Build();
+            WebApplication app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
             app.UseAuthorization();
@@ -30,7 +41,16 @@ namespace AI_applications
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            await Console(app);
+
             app.Run();
+        }
+
+        private static async Task Console(WebApplication app)
+        {
+            using var scope = app.Services.CreateScope();
+            var consoleController = scope.ServiceProvider.GetRequiredService<ConsoleController>();
+            await consoleController.Index();
         }
     }
 }
