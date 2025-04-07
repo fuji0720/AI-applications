@@ -11,7 +11,7 @@ ChatGPT:
 In conclusion, the provided code is well-written and adheres to modern ASP.NET Core conventions.
 The structure (Program -> DI configuration -> Controllers -> Services) is clean and maintainable.
 Dependency injection is used properly to manage configurations and external clients, and the code avoids any obvious anti-patterns.
-The custom console startup logic is a bit unconventional for a web project, but itÅfs implemented carefully and doesnÅft introduce errors in the context itÅfs used.  
+The custom console startup logic is a bit unconventional for a web project, but it's implemented carefully and doesn't introduce errors in the context it's used.  
 
 User:  
 Thank you for your review.
