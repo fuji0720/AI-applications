@@ -1,8 +1,8 @@
 # AI-applications
 
-**Vision**: ImageAnalysis  
-**Speech**: SpeechRecognizer, TranslationRecognizer, SpeechSynthesizer  
-**Language**: TextAnalytics, FormRecognizer, QuestionAnswering, Conversations  
+**Vision**: Image Analysis  
+**Speech**: Speech Recognizer, Translation Recognizer, Speech Synthesizer  
+**Language**: Text Analytics, Form Recognizer, Question Answering, Conversations  
 
 ## Code review by ChatGPT 4.5  
 [Link to ChatGPT](https://chatgpt.com/share/67f20e06-5fbc-800e-89f1-b289119ae20a)  
